@@ -1,5 +1,9 @@
 var React = require('react');
 
+function puke(object){
+    return <pre>{JSON.stringify(object, null, ' ')}</pre>
+}
+
 function ConfirmBattle(props){
     if(props.isLoading)
         return (
@@ -7,7 +11,7 @@ function ConfirmBattle(props){
         );
     else {
         return (
-            <p>CONFIRM</p>
+            <p>CONFIRM! : {puke(props)}</p>
         );
     }
 }
