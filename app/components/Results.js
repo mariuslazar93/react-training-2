@@ -5,11 +5,12 @@ var Link = ReactRouter.Link;
 var UserDetails = require('./UserDetails');
 var UserDetailsWrapper = require('./UserDetailsWrapper');
 var MainWrapper = require('./MainWrapper');
+var Loading = require('./Loading');
 
 
 function StartOver(){
     return (
-        <div className='col-sm-12' className='spacer-top'>
+        <div className='col-sm-12 spacer-top'>
           <Link to='/playerOne'>
             <button type='button' className='btn btn-lg btn-danger'>Start Over</button>
           </Link>
@@ -17,20 +18,26 @@ function StartOver(){
     );
 }
 
+function Tie() {
+    return (
+        <MainWrapper>
+            <h1>It is a tie!</h1>
+            <StartOver />
+        </MainWrapper>
+    );
+}
+
 function Results(props){
 
     if(props.isLoading){
         return (
-            <p>LOADING</p>
+            <Loading text="Loading..." />
         );
     }
 
     if(props.scores[0] === props.scores[1]){
         return (
-            <MainWrapper>
-                <h1>It is a tie!</h1>
-                <StartOver />
-            </MainWrapper>
+            <Tie />
         );
     }
 
@@ -40,7 +47,7 @@ function Results(props){
     return (
         <MainWrapper>
             <h1>Results</h1>
-            <div className="col-sm-8 col-offset-2">
+            <div className="col-sm-8 col-sm-offset-2">
                 <UserDetailsWrapper header='Winner'>
                     <UserDetails score={props.scores[winningIndex]} info={props.playersInfo[winningIndex]} />
                 </UserDetailsWrapper>
