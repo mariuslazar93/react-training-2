@@ -7,7 +7,6 @@ var UserDetailsWrapper = require('./UserDetailsWrapper');
 var MainWrapper = require('./MainWrapper');
 var Loading = require('./Loading');
 
-
 function StartOver(){
     return (
         <div className='col-sm-12 spacer-top'>
@@ -58,9 +57,7 @@ function Results(props){
             <StartOver />
         </MainWrapper>
     );
-
 }
-
 
 Results.propTypes = {
     isLoading: PropTypes.bool.isRequired,
